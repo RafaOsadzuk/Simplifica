@@ -1,21 +1,23 @@
 package com.example.demo.controller;
 
-import com.example.demo.service.HelloWorldService;
+import com.example.demo.models.Question;
+import com.example.demo.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 
 @RestController
-@RequestMapping("/hello-world")
-public class HelloWorldController {
+@RequestMapping("/quiz")
+public class QuizController {
 
     @Autowired
-    private HelloWorldService helloWorldService;
+    private QuizService quizService;
 
-    @GetMapping
-    public String helloWorld() {
-    return helloWorldService.helloWorld("Rafael");
+    @GetMapping("/questions")
+    public List<Question> getAllQuestions() {
+        return quizService.getAllQuestions();
     }
 }
